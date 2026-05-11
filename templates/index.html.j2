@@ -1,0 +1,44 @@
+{# templates/index.html.j2
+   Template Jinja2 — Lab 1, Task 4
+   Genera una pagina HTML con informazioni dinamiche della VM
+#}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ app_name }}</title>
+  <style>
+    body  { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 0 20px; }
+    h1    { color: #0A53D3; border-bottom: 2px solid #BFD2F1; padding-bottom: 10px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th    { background: #0A53D3; color: white; padding: 8px 12px; text-align: left; }
+    td    { padding: 8px 12px; border-bottom: 1px solid #E5E5E5; }
+    tr:nth-child(even) { background: #F7F8FC; }
+    .footer { margin-top: 30px; font-size: 12px; color: #6B7280; }
+  </style>
+</head>
+<body>
+  <h1>{{ app_name }}</h1>
+
+  <table>
+    <tr><th colspan="2">Informazioni sistema</th></tr>
+    <tr><td>Hostname</td>         <td>{{ ansible_hostname }}</td></tr>
+    <tr><td>Indirizzo IP</td>     <td>{{ ansible_default_ipv4.address }}</td></tr>
+    <tr><td>Sistema operativo</td><td>{{ ansible_distribution }} {{ ansible_distribution_version }}</td></tr>
+    <tr><td>Kernel</td>           <td>{{ ansible_kernel }}</td></tr>
+    <tr><th colspan="2">Configurazione applicazione</th></tr>
+    <tr><td>App name</td>         <td>{{ app_name }}</td></tr>
+    <tr><td>Porta HTTP</td>       <td>{{ http_port }}</td></tr>
+    <tr><td>Owner</td>            <td>{{ app_owner }}</td></tr>
+  </table>
+
+  {# Mostra lunghezza password solo se definita — mai il valore in chiaro #}
+  {% if db_password is defined %}
+  <!-- DB password configurata ({{ db_password | length }} chars) -->
+  {% endif %}
+
+  <div class="footer">
+    Deployato con Ansible — {{ ansible_date_time.date }}
+  </div>
+</body>
+</html>

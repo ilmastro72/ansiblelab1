@@ -1,0 +1,12 @@
+# QUESTO FILE E' UN ESEMPIO — NON COMMITTARE IL FILE REALE DECIFRATO
+#
+# Per creare il vault.yml cifrato eseguire:
+#   ansible-vault create group_vars/all/vault.yml
+#
+# Inserire nel file (poi salvare e uscire):
+#   vault_db_password: "SuperSecret123"
+#
+# Il file vault.yml cifrato puo essere committato su Git.
+# Il file .vault_pass (con la password) NON va committato — aggiunto in .gitignore
+
+vault_db_password: "SuperSecret123"

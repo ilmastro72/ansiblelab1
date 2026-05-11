@@ -1,0 +1,16 @@
+---
+# Configurazione ansible-lint per il Lab 1
+# Documentazione: https://ansible.readthedocs.io/projects/lint
+
+warn_list:
+  - yaml[line-length]    # linee lunghe: warning, non errore
+  - no-changed-when      # command/shell senza changed_when
+
+skip_list: []
+
+exclude_paths:
+  - .git/
+  - roles/external/
+
+# Richiede FQCN per tutti i moduli builtin
+use_default_rules: true

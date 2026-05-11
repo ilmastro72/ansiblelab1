@@ -1,0 +1,11 @@
+---
+# Variabili globali per tutti gli host
+# I valori sensibili vanno in vault.yml — mai qui
+
+app_name:  "MyApp"
+http_port: 80
+app_owner: www-data
+
+# Referenza alla variabile cifrata in vault.yml
+# db_password: "{{ vault_db_password }}"
+# Decommentare dopo aver creato vault.yml (Task 5)

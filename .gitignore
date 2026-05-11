@@ -1,0 +1,19 @@
+# Ansible
+*.retry
+.vault_pass
+.vault_pass.txt
+
+# Vault — MAI committare vault decifrato
+# vault.yml cifrato e OK da committare
+# vault.yml in chiaro NON va committato
+group_vars/all/vault.yml.decrypted
+
+# Dipendenze Galaxy (installate dalla pipeline)
+roles/external/
+collections/
+
+# Editor
+.vscode/
+*.swp
+*~
+.DS_Store
