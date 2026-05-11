@@ -34,6 +34,15 @@
         - nginx
 
     # ── Task 2: Directory applicazione ─────────────────────────────────────
+    - name: Crea directory applicazione
+      ansible.builtin.file:
+        path: /var/www/html/myapp
+        state: directory
+        mode: '0755'
+        owner: www-data
+
+
+    # ── Task 2: Directory applicazione ─────────────────────────────────────
  #   - name: Crea directory applicazione
  #     ansible.builtin.file:
  #       path: /var/www/html/{{ app_name | lower }}
@@ -46,14 +55,14 @@
  #       - config
 
     # ── Task 3: Servizio ────────────────────────────────────────────────────
-#    - name: Avvia e abilita nginx
-#      ansible.builtin.service:
-#        name: nginx
-#        state: started
-#        enabled: true
-#      tags:
-#        - install
-#        - nginx
+    - name: Avvia e abilita nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+      tags:
+        - install
+        - nginx
 
     # ── Task 4: Template HTML ───────────────────────────────────────────────
 #    - name: Deploy pagina HTML da template
