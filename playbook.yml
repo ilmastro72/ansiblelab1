@@ -15,11 +15,11 @@
   # Le variabili sono in group_vars/all/vars.yml
   # Le variabili sensibili sono in group_vars/all/vault.yml (cifrato)
 
-  handlers:
-    - name: Riavvia nginx
-      ansible.builtin.service:
-        name: nginx
-        state: restarted
+#  handlers:
+#    - name: Riavvia nginx
+#      ansible.builtin.service:
+#        name: nginx
+#        state: restarted
 
   tasks:
 
@@ -34,36 +34,36 @@
         - nginx
 
     # ── Task 2: Directory applicazione ─────────────────────────────────────
-    - name: Crea directory applicazione
-      ansible.builtin.file:
-        path: /var/www/{{ app_name | lower }}
-        state: directory
-        mode: '0755'
-        owner: "{{ app_owner }}"
-        group: "{{ app_owner }}"
-      tags:
-        - install
-        - config
+ #   - name: Crea directory applicazione
+ #     ansible.builtin.file:
+ #       path: /var/www/html/{{ app_name | lower }}
+ #       state: directory
+ #       mode: '0755'
+ #       owner: "{{ app_owner }}"
+ #       group: "{{ app_owner }}"
+ #     tags:
+ #       - install
+ #       - config
 
     # ── Task 3: Servizio ────────────────────────────────────────────────────
-    - name: Avvia e abilita nginx
-      ansible.builtin.service:
-        name: nginx
-        state: started
-        enabled: true
-      tags:
-        - install
-        - nginx
+#    - name: Avvia e abilita nginx
+#      ansible.builtin.service:
+#        name: nginx
+#        state: started
+#        enabled: true
+#      tags:
+#        - install
+#        - nginx
 
     # ── Task 4: Template HTML ───────────────────────────────────────────────
-    - name: Deploy pagina HTML da template
-      ansible.builtin.template:
-        src: templates/index.html.j2
-        dest: /var/www/{{ app_name | lower }}/index.html
-        owner: "{{ app_owner }}"
-        group: "{{ app_owner }}"
-        mode: '0644'
-      notify: Riavvia nginx
-      tags:
-        - deploy
-        - html
+#    - name: Deploy pagina HTML da template
+#      ansible.builtin.template:
+#        src: templates/index.html.j2
+#        dest: /var/www/html/{{ app_name | lower }}/index.html
+#        owner: "{{ app_owner }}"
+#        group: "{{ app_owner }}"
+#        mode: '0644'
+#      notify: Riavvia nginx
+#      tags:
+#        - deploy
+#        - html
